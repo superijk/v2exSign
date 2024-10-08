@@ -16,7 +16,7 @@ jobs:
     - run: |
         python -m pip install --upgrade pip
         pip install requests
-    - env:
+    env:
         CK: ${{ secrets.CK }}  
         WECHATPUSHURL: ${{ secrets.WECHATPUSHURL }}   
     - run: |

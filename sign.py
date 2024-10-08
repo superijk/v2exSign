@@ -19,8 +19,9 @@ def send(taskName, logText, flag):
 
     # 将UTC时间转换为东八区时间
     local_datetime = utc_datetime.replace(tzinfo=pytz.UTC).astimezone(tz)
-    print(local_datetime)
-    s = local_datetime
+    formatted_time = local_datetime.strftime("%Y-%m-%d %H:%M:%S")
+    print(formatted_time)
+    s = formatted_time
     url = os.environ["WECHATPUSHURL"]
     data = {
         'msgtype': 'text',

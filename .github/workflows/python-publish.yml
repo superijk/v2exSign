@@ -17,7 +17,7 @@ jobs:
         python -m pip install --upgrade pip
         pip install requests
     env:
-        CK: ${{ secrets.CK }}  
-        WECHATPUSHURL: ${{ secrets.WECHATPUSHURL }}   
+      CK: ${{ secrets.CK }}  
+      WECHATPUSHURL: ${{ secrets.WECHATPUSHURL }}
     - run: |
         python sign.py

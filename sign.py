@@ -7,7 +7,6 @@ import pytz
 taskName = 'v2ex签到'
 
 def send(taskName, logText, flag):
-   
 
     # 获取当前UTC时间戳
     timestamp = time.time()
@@ -20,10 +19,8 @@ def send(taskName, logText, flag):
 
     # 将UTC时间转换为东八区时间
     local_datetime = utc_datetime.replace(tzinfo=pytz.UTC).astimezone(tz)
-
-    formatted_time = time.strftime("%Y-%m-%d %H:%M:%S", local_datetime)
-    print(formatted_time)
-    s = formatted_time
+    print(local_datetime)
+    s = local_datetime
     url = os.environ["WECHATPUSHURL"]
     data = {
         'msgtype': 'text',

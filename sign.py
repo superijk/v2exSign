@@ -53,17 +53,11 @@ try:
     if match:
         print('今日未签到')
         once = match[0]
-        match = re.findall('已连续登录 (\d+)', html)
-        signDay = ''
-        if match:
-            signDay = match[0]
-        print(signDay)
-        print(once)
         r = requests.get('https://www.v2ex.com/mission/daily/redeem?once=' + once, headers=headers)
-        print(r.text)
+        r = requests.get('https://www.v2ex.com/mission/daily', headers=headers)
         if re.findall('每日登录奖励已领取', r.text):
             print('v2ex今天签到成功')
-            send(taskName,'签到成功'+(signDay+1)+'天',True)
+            send(taskName,'签到成功'+(re.findall('已连续登录 (\d+)', r.text)[0])+'天',True)
         else:
             print('v2ex今天签到失败')
             send(taskName,'签到失败',False)

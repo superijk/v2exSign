@@ -50,7 +50,7 @@ try:
         match = re.findall('已连续登录 (\d+)', html)
         signDay = ''
         if match:
-            signDay = [0]
+            signDay = match[0]
         r = requests.get('https://www.v2ex.com/mission/daily/redeem?once=' + once, headers=headers)
         if re.findall('每日登录奖励已领取', r.text):
             print('v2ex今天签到成功')

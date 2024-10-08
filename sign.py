@@ -2,18 +2,26 @@ import requests
 import re
 import time
 import os
+from datetime import datetime
+import pytz
 taskName = 'v2ex签到'
 
 def send(taskName, logText, flag):
-    # 获取当前时间的时间戳
-    current_timestamp = time.time()
+   
 
-    # 将时间戳转换为本地时间的struct_time对象
-    local_time = time.localtime(current_timestamp)
+    # 获取当前UTC时间戳
+    timestamp = time.time()
 
-    # 使用strftime()方法将struct_time对象格式化为指定的时间字符串
-    formatted_time = time.strftime("%Y-%m-%d %H:%M:%S", local_time)
+    # 将UTC时间戳转换为UTC的datetime对象
+    utc_datetime = datetime.utcfromtimestamp(timestamp)
 
+    # 设置东八区时区
+    tz = pytz.timezone('Asia/Shanghai')
+
+    # 将UTC时间转换为东八区时间
+    local_datetime = utc_datetime.replace(tzinfo=pytz.UTC).astimezone(tz)
+
+    formatted_time = time.strftime("%Y-%m-%d %H:%M:%S", local_datetime)
     print(formatted_time)
     s = formatted_time
     url = os.environ["WECHATPUSHURL"]

@@ -58,6 +58,9 @@ try:
         if re.findall('每日登录奖励已领取', r.text):
             print('v2ex今天签到成功')
             send(taskName,'签到成功'+(signDay+1)+'天',True)
+        else:
+            print('v2ex今天签到失败')
+            send(taskName,'签到失败',False)
     else:
         print('今日已签到')
         send(taskName,'今日已签到',True)

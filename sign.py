@@ -52,6 +52,7 @@ try:
         if match:
             signDay = match[0]
         print(signDay)
+        print(once)
         r = requests.get('https://www.v2ex.com/mission/daily/redeem?once=' + once, headers=headers)
         print(r.text)
         if re.findall('每日登录奖励已领取', r.text):

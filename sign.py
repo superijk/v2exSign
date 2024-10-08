@@ -1,6 +1,7 @@
 import requests, json
 import re
 import time
+import os
 taskName = 'v2ex签到'
 
 def send(taskName, logText, flag):
@@ -15,7 +16,7 @@ def send(taskName, logText, flag):
 
     print(formatted_time)
     s = formatted_time
-    url = ''
+    url = os.environ["WECHATPUSHURL"]
     data = {
         'msgtype': 'text',
         'text': {
@@ -37,7 +38,7 @@ def send(taskName, logText, flag):
 
 
 try:
-    ck = ''
+    ck = os.environ["CK"]
     headers = {'Cookie': ck}
     r = requests.get('https://www.v2ex.com/mission/daily', headers=headers)
     html = r.text

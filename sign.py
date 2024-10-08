@@ -53,6 +53,7 @@ try:
             signDay = match[0]
         print(signDay)
         r = requests.get('https://www.v2ex.com/mission/daily/redeem?once=' + once, headers=headers)
+        print(r.text)
         if re.findall('每日登录奖励已领取', r.text):
             print('v2ex今天签到成功')
             send(taskName,'签到成功'+(signDay+1)+'天',True)

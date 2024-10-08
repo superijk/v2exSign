@@ -1,0 +1,23 @@
+name:  qiandao
+on:
+  push:
+    branches:
+      - main
+  schedule:
+    - cron:  "1 0 * * *"
+jobs:
+  qiandao01:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-python@v5
+      with:
+        python-version: '3.10' 
+    - run: |
+        python -m pip install --upgrade pip
+        pip install requests
+        pip install json
+        pip install re
+        pip install time
+    - run: |
+        python sign.py

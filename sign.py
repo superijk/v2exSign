@@ -53,7 +53,8 @@ try:
     if match:
         print('今日未签到')
         once = match[0]
-        r = requests.get('https://www.v2ex.com/mission/daily/redeem?once=' + once, headers=headers)
+        params = {'once':once}
+        r = requests.get('https://www.v2ex.com/mission/daily/redeem, params=params,headers=headers)
         r = requests.get('https://www.v2ex.com/mission/daily', headers=headers)
         if re.findall('每日登录奖励已领取', r.text):
             print('v2ex今天签到成功')

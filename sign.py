@@ -5,7 +5,7 @@ import os
 from datetime import datetime
 import pytz
 import urllib3
-taskName = 'v2ex签到'
+taskName = 'v2ex签到' 
 
 def send(taskName, logText, flag):
 
